@@ -15,10 +15,4 @@ alias zshconfig='nvim ~/.zshrc'
 alias nvimconfig='nvim ~/.config/nvim/init.vim'
 alias vimconfig='vim ~/.vimrc'
 alias ohmyzsh='nvim ~/.oh-my-zsh'
-
-# Starship
 alias starshipconfig='nvim ~/.config/starship.toml'
-
-# Zathura
-alias zat='zathura'
-alias ztheme='~/.config/zathura/switch-theme.sh'
