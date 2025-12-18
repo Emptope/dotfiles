@@ -6,7 +6,6 @@
 call plug#begin('~/.vim/plugged')
 
 " Colorschemes
-" Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ghifarit53/tokyonight-vim'
 
 " --- LSP Config ---
@@ -27,8 +26,6 @@ Plug 'vim-airline/vim-airline'        " Statusline
 Plug 'vim-airline/vim-airline-themes' " Themes for Airline
 Plug 'nvim-tree/nvim-web-devicons'    " Filetype icons
 Plug 'ryanoasis/vim-devicons'         " Filetype icons
-Plug 'tpope/vim-fugitive'             " Git integration
-Plug 'airblade/vim-gitgutter'         " Git diff signs
 Plug 'preservim/nerdcommenter'        " Easy commenting
 Plug 'ctrlpvim/ctrlp.vim'             " Fuzzy file finder
 
@@ -60,9 +57,8 @@ filetype plugin indent on     " Enable filetype detection, plugins, and indentat
 "=======================
 " Key Mappings
 "=======================
-let mapleader=" "             " Map leader key to Space
+let mapleader=" "            
 
-" Toggle NERDTree
 nnoremap <F2> :NERDTreeToggle<CR>
 
 " Navigate Vim panes/splits
@@ -93,9 +89,6 @@ autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | wincmd p |
 
 " Show hidden files in NERDTree by default
 let g:NERDTreeShowHidden=1
-
-" Exit Vim if NERDTree is the only window left
-" autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 " Icons require a patched font (Nerd Font)
 let g:NERDTreeShowIcons=1
@@ -186,17 +179,6 @@ let g:NERDSpaceDelims = 1       " Add spaces after comment delimiters by default
 " Default mapping: <leader>c<space> to toggle comment
 
 "=======================
-" Fugitive Shortcuts
-"=======================
-" :G        - Git status window (or :Git)
-" :Gdiff    - Git diff
-" :Gblame   - Git blame
-" :Gcommit  - Git commit
-" :Gpush    - Git push
-" :Gpull    - Git pull
-" etc.
-
-"=======================
 " Colorscheme Activation
 "=======================
 colorscheme tokyonight
@@ -209,8 +191,6 @@ set background=dark
 "=======================
 " LSP and Completion
 "=======================
-
-" Enable LSP for specific languages
 
 lua << EOF
 local lspconfig = require('lspconfig')
@@ -246,11 +226,8 @@ lspconfig.bashls.setup{
 }
 EOF
 
-" Setup nvim-cmp
-
 lua << EOF
 
--- Import required modules
 local cmp = require'cmp'
 local luasnip = require'luasnip'
 
