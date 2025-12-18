@@ -1,2 +1,2 @@
-# MyLinuxConfig
-Personal configurations of Linux.
+# dotfiles
+My personal dotfiles.
