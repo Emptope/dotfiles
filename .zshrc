@@ -8,25 +8,16 @@ add_path() {
 }
 
 add_path "$HOME/.local/bin"
-add_path "$HOME/.pyenv/bin"
 add_path "$HOME/.cargo/bin"
 add_path "$HOME/.npm-global/bin"
 
 export PATH
 
-pyenv() {
-  unset -f pyenv
-  eval "$(command pyenv init --path)"
-  eval "$(command pyenv init -)"
-  eval "$(command pyenv virtualenv-init -)"
-  pyenv "$@"
-}
-
 # Completion Settings
 autoload -Uz compinit
 compinit -C
 
-setopt AUTO_CD # use dir names to cd
+# setopt AUTO_CD # use dir names to cd
 setopt AUTO_PUSHD PUSHD_IGNORE_DUPS # dir stack
 setopt EXTENDED_GLOB
 bindkey -v  # vim mode
@@ -46,6 +37,28 @@ plugins=(
 )
 source $ZSH/oh-my-zsh.sh
 
+conda() {
+    unset -f conda
+    
+    local CONDA_ROOT_PATH="/home/emptope/pkg/miniconda3"
+    
+    __conda_setup="$("$CONDA_ROOT_PATH/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
+    
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "$CONDA_ROOT_PATH/etc/profile.d/conda.sh" ]; then
+            . "$CONDA_ROOT_PATH/etc/profile.d/conda.sh"
+        else
+            export PATH="$CONDA_ROOT_PATH/bin:$PATH"
+        fi
+    fi
+    
+    unset __conda_setup
+    
+    conda "$@"
+}
+
 proxy() {
   local mode=$1
   local host="127.0.0.1"
@@ -55,12 +68,10 @@ proxy() {
     on)
       export http_proxy="http://$host:$port"
       export https_proxy="http://$host:$port"
-      export HTTP_PROXY="http://$host:$port"
-      export HTTPS_PROXY="http://$host:$port"
       echo "Proxy enabled on $host:$port"
       ;;
     off)
-      unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY
+      unset http_proxy https_proxy
       echo "Proxy disabled"
       ;;
     status)
@@ -79,3 +90,5 @@ proxy() {
 }
 
 eval "$(starship init zsh)"
+
+eval "$(zoxide init zsh)"
