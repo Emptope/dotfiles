@@ -1,19 +1,7 @@
 . "$HOME\Documents\PowerShell\aliases.ps1"
 
 # PSReadLine
-Set-PSReadLineOption -Colors @{
-    Command            = 'Cyan'
-    Parameter          = 'Green'
-    String             = 'Yellow'
-    Variable           = 'White'
-    Operator           = 'DarkGray'
-    Number             = 'Magenta'
-    Type               = 'Blue'
-    Comment            = 'DarkGreen'
-    InlinePrediction   = 'DarkGray'
-    Error              = 'Red'
-}
-
+Import-Module PSReadLine
 Set-PSReadLineOption -EditMode Vi
 
 function conda {
