@@ -1,18 +1,10 @@
-# Git shortcuts
-alias gs='git status'
-alias ga='git add'
-alias gc='git commit'
-alias gp='git push'
-alias gl='git log --oneline --graph --decorate'
-
 # Directory listing
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
 # Quick edit
-alias zshconfig='nvim ~/.zshrc'
-alias nvimconfig='nvim ~/.config/nvim/init.vim'
-alias vimconfig='vim ~/.vimrc'
-alias ohmyzsh='nvim ~/.oh-my-zsh'
-alias starshipconfig='nvim ~/.config/starship.toml'
+alias zshconfig='$EDITOR ~/.zshrc'
+alias vimconfig='$EDITOR ~/.vimrc'
+alias nvimconfig='$EDITOR ~/.config/nvim/init.vim'
+alias starshipconfig='$EDITOR ~/.config/starship.toml'
