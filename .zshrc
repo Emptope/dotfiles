@@ -72,6 +72,7 @@ plugins=(
     git 
     zsh-autosuggestions 
     fast-syntax-highlighting
+    zoxide
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -146,5 +147,3 @@ proxy() {
 }
 
 eval "$(starship init zsh)"
-
-eval "$(zoxide init zsh)"
