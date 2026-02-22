@@ -1,3 +1,5 @@
+# ~/.zshrc
+
 export LANG=en_US.UTF-8
 
 add_path() {
@@ -12,6 +14,18 @@ add_path "$HOME/.cargo/bin"
 add_path "$HOME/.npm-global/bin"
 
 export PATH
+
+export LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
+
+# Environment variables
+export TERM=xterm-256color
+export EDITOR='vim'
+
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
 
 if [ -f "$HOME/.zsh_aliases" ]; then
   source "$HOME/.zsh_aliases"
@@ -32,8 +46,7 @@ HISTSIZE=120000
 SAVEHIST=100000
 setopt HIST_EXPIRE_DUPS_FIRST
 
-export EDITOR='nvim'
-
+# oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
 
