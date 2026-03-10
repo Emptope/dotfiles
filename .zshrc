@@ -83,8 +83,8 @@ HIST_STAMPS="mm/dd/yyyy"
 
 plugins=(
     git 
-    zsh-autosuggestions 
-    fast-syntax-highlighting
+    zsh-autosuggestions
+    zsh-syntax-highlighting
     zoxide
 )
 
