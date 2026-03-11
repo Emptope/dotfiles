@@ -2,21 +2,6 @@
 
 export LANG=en_US.UTF-8
 
-add_path() {
-  local dir="$1"
-  if [ -d "$dir" ] && [[ ":$PATH:" != *":$dir:"* ]]; then
-    PATH="$dir:$PATH"
-  fi
-}
-
-add_path "$HOME/.local/bin"
-add_path "$HOME/.cargo/bin"
-add_path "$HOME/.npm-global/bin"
-
-export PATH
-
-export LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
-
 # Environment variables
 export TERM=xterm-256color
 export EDITOR='vim'
