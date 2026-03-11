@@ -1,3 +1,5 @@
+# ~/.zshenv
+
 add_path() {
   local dir="$1"
   if [ -d "$dir" ] && [[ ":$PATH:" != *":$dir:"* ]]; then
