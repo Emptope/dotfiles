@@ -97,14 +97,20 @@ let g:coc_global_extensions = [
 let mapleader="," 
 
 " --- General Utilities ---
-nnoremap <leader>n :NERDTreeToggle<CR> 
 " Open terminal in the current file's directory
 nnoremap <leader>t :cd %:p:h \| belowright terminal<CR> 
 tnoremap <C-t> <C-\><C-n> 
-
+" Toggle NERDTree
+nnoremap <leader>n :NERDTreeToggle<CR> 
 " Map gc to toggle comment
 nmap gc <Plug>NERDCommenterToggle
 vmap gc <Plug>NERDCommenterToggle
+
+" --- Window Navigation ---
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " --- Tab & Buffer Navigation ---
 for i in range(1, 9)
