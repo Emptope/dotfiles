@@ -4,7 +4,8 @@
 call plug#begin('~/.vim/plugged')
 
 " UI & Aesthetics
-Plug 'ghifarit53/tokyonight-vim'                " Colorscheme
+" Plug 'ghifarit53/tokyonight-vim'                " Colorscheme
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }   " Colorscheme
 Plug 'vim-airline/vim-airline'                  " Statusline
 Plug 'vim-airline/vim-airline-themes'           " Statusline themes
 Plug 'ryanoasis/vim-devicons'                   " Filetype icons
@@ -45,15 +46,15 @@ set smartindent autoindent                  " Automatic indentation logic
 " 3. Plugin-Specific Configurations
 " =============================================================================
 
-" --- TokyoNight Theme ---
-let g:tokyonight_style = 'night' " available: night, storm
-let g:tokyonight_enable_italic = 1 
-colorscheme tokyonight 
-set background=dark
+" --- Theme ---
+" let g:tokyonight_style = 'night' " available: night, storm
+" let g:tokyonight_enable_italic = 1 
+" colorscheme tokyonight 
+colorscheme catppuccin_mocha
 
 " --- Airline Statusline ---
 let g:airline_powerline_fonts = 1 
-let g:airline_theme = 'tokyonight' 
+let g:airline_theme = 'catppuccin_mocha' 
 let g:airline#extensions#tabline#enabled = 1 
 let g:airline#extensions#tabline#formatter = 'unique_tail' 
 let g:airline#extensions#whitespace#enabled = 0 
@@ -62,6 +63,22 @@ let g:airline#extensions#whitespace#enabled = 0
 " Open NERDTree automatically if no file is specified
 autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif 
 let g:NERDTreeShowIcons=1 
+
+" --- NERDCommenter ---
+" Create default mappings
+let g:NERDCreateDefaultMappings = 1
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+" Enable NERDCommenterToggle to check all selected lines is commented or not
+let g:NERDToggleCheckAllLines = 1
 
 " --- CoC Extensions ---
 let g:coc_global_extensions = [
@@ -84,6 +101,10 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 " Open terminal in the current file's directory
 nnoremap <leader>t :cd %:p:h \| belowright terminal<CR> 
 tnoremap <C-t> <C-\><C-n> 
+
+" Map gc to toggle comment
+nmap gc <Plug>NERDCommenterToggle
+vmap gc <Plug>NERDCommenterToggle
 
 " --- Tab & Buffer Navigation ---
 for i in range(1, 9)
