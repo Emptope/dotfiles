@@ -13,6 +13,4 @@ add_path "$HOME/.npm-global/bin"
 
 export PATH
 
-export LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
-
 . "$HOME/.cargo/env"
