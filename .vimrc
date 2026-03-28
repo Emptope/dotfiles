@@ -8,7 +8,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }   " Colorscheme
 Plug 'vim-airline/vim-airline'                  " Statusline
 Plug 'vim-airline/vim-airline-themes'           " Statusline themes
-Plug 'ryanoasis/vim-devicons'                   " Filetype icons
+" Plug 'ryanoasis/vim-devicons'                   " Filetype icons
 
 " Development Tools
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompletion 
@@ -61,8 +61,8 @@ let g:airline#extensions#whitespace#enabled = 0
 
 " --- NERDTree ---
 " Open NERDTree automatically if no file is specified
-autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif 
-let g:NERDTreeShowIcons=1 
+" autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif 
+" let g:NERDTreeShowIcons=1 
 
 " --- NERDCommenter ---
 " Create default mappings
