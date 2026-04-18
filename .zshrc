@@ -4,11 +4,20 @@ export LANG=en_US.UTF-8
 
 # Environment variables
 export TERM=xterm-256color
-export EDITOR='vim'
+export EDITOR='nvim'
 
 if [ -f "$HOME/.zsh_aliases" ]; then
   source "$HOME/.zsh_aliases"
 fi
+
+_auto_zcompile() {
+  local target=$1
+  if [[ ! -e "${target}.zwc" || "${target}" -nt "${target}.zwc" ]]; then
+    zcompile "${target}"
+  fi
+}
+
+_auto_zcompile ~/.zshrc
 
 # Completion Settings
 autoload -Uz compinit
@@ -61,10 +70,10 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="mm/dd/yyyy"
 
 plugins=(
-    git 
-    zsh-autosuggestions
-    zsh-syntax-highlighting
+#    git 
     zoxide
+    zsh-autosuggestions 
+    zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -89,8 +98,8 @@ export FZF_ALT_C_OPTS="
 conda() {
     unset -f conda
     
-    local CONDA_ROOT_PATH="/home/emptope/pkg/miniconda3"
-    
+    local CONDA_ROOT_PATH="/Users/emptope/miniconda3"
+
     __conda_setup="$("$CONDA_ROOT_PATH/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
     
     if [ $? -eq 0 ]; then
