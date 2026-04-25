@@ -1,0 +1,17 @@
+# ~/.zsh_functions
+
+syhpcsync() {
+    local target=$1
+    local remote_host="syhpc"
+    local local_base="$HOME/Main/Chem/Backup"
+
+    case $target in
+        scripts) rsync -avzP "${remote_host}:~/scripts" "$local_base" ;;
+        chem)    rsync -avzP "${remote_host}:~/chem" "$local_base" ;;
+        all)
+            rsync -avzP "${remote_host}:~/scripts" "$local_base"
+            rsync -avzP "${remote_host}:~/chem" "$local_base"
+            ;;
+        *) echo "Usage: hpcsync {scripts|chem|all}" ;;
+    esac
+}
